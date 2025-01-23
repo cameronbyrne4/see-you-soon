@@ -1,25 +1,24 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { Progress } from "@/components/ui/progress"
 import React from "react"
 
 const TimeTracker = () => {
-  const [now, setNow] = useState(new Date())
+  const [now, setNow] = useState(Date.now())
 
   // Define your departure and return dates in PST
-  const departureDate = new Date("2025-01-04T14:00:00-08:00")
-  const returnDate = new Date("2025-05-13T12:00:00-07:00") // Note: PDT in May
+  const departureDate: number = new Date("2025-01-04T14:00:00-08:00").getTime()
+  const returnDate: number = new Date("2025-05-13T12:00:00-07:00").getTime() // Note: PDT in May
 
   useEffect(() => {
     const timer = setInterval(() => {
-      setNow(new Date())
+      setNow(Date.now())
     }, 10) // Update every 10ms for smooth decimals
 
     return () => clearInterval(timer)
   }, [])
 
-  const calculateTime = (start, end) => {
+  const calculateTime = (start: number, end: number) => {
     const diff = Math.abs(end - start)
     const days = Math.floor(diff / (1000 * 60 * 60 * 24))
     const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))
@@ -44,11 +43,11 @@ const TimeTracker = () => {
   const elapsed = now - departureDate
   const progress = (elapsed / totalDuration) * 100
 
-  const formatNumber = (num, decimals = 0) => {
+  const formatNumber = (num: number, decimals: number = 0): string => {
     return num.toFixed(decimals).padStart(2, "0")
   }
 
-  const formatMilliseconds = (ms) => {
+  const formatMilliseconds = (ms: number) => {
     return (ms / 1000).toFixed(3).slice(2)
   }
 
