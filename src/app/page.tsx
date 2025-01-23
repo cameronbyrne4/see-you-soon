@@ -72,7 +72,7 @@ const TimeTracker = () => {
         <h2 className="text-2xl mb-4">Time Until Return</h2>
         <div className="font-mono text-4xl mb-16 text-[var(--foreground)]">
           <span className="text-[var(--foreground)]">{formatNumber(timeUntilReturn.days)}</span>
-          <span className="text-gray-500 mx-1">days</span>
+          <span className="text-gray-500 mx-2 mr-6">days</span>
           <span className="text-[var(--foreground)]">{formatNumber(timeUntilReturn.hours)}</span>
           <span className="text-gray-500 mx-1">:</span>
           <span className="text-[var(--foreground)]">{formatNumber(timeUntilReturn.minutes)}</span>
@@ -85,7 +85,7 @@ const TimeTracker = () => {
         <h2 className="text-2xl mb-4">Time Since Departure</h2>
         <div className="font-mono text-4xl mb-16 text-[var(--foreground)]">
           <span className="text-[var(--foreground)]">{formatNumber(timeSinceDeparture.days)}</span>
-          <span className="text-gray-500 mx-1">days</span>
+          <span className="text-gray-500 mx-2 mr-6">days</span>
           <span className="text-[var(--foreground)]">{formatNumber(timeSinceDeparture.hours)}</span>
           <span className="text-gray-500 mx-1">:</span>
           <span className="text-[var(--foreground)]">{formatNumber(timeSinceDeparture.minutes)}</span>
