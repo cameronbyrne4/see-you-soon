@@ -57,57 +57,58 @@ const TimeTracker = () => {
   const daysPassed = Math.floor((now - departureDate) / (1000 * 60 * 60 * 24))
 
   return (
-    <div className="min-h-screen bg-gray-900 text-white flex flex-col items-center justify-center p-4">
-      <h1 className="text-4xl font-bold mb-12">Time Tracker</h1>
+    <div className="min-h-screen flex flex-col items-center justify-center p-4">
+      <h1 className="text-4xl font-bold mb-12 fixed top-0 left-0 w-full bg-[var(--foreground)] text-[var(--background)] shadow z-10 text-center p-4">
+        When will Cameron come home?
+      </h1>
 
-      <div className="text-center mb-16">
+      <div className="text-center mb-48 mt-64">
         <h2 className="text-2xl mb-4">Journey Progress</h2>
-        <div className="text-8xl font-mono font-bold text-blue-400 mb-4">{progress.toFixed(1)}%</div>
-        <Progress value={progress} className="w-64 h-2 mx-auto" />
+        <div className="text-8xl font-mono font-bold text-[var(--foreground)] mb-12">{progress.toFixed(1)}%</div>
+        
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-12 w-full max-w-4xl mb-16">
-        <div className="text-center">
-          <h2 className="text-2xl mb-4">Time Since Departure</h2>
-          <div className="font-mono text-4xl">
-            <span className="text-yellow-400">{formatNumber(timeSinceDeparture.days)}</span>
-            <span className="text-gray-500 mx-1">days</span>
-            <span className="text-yellow-400">{formatNumber(timeSinceDeparture.hours)}</span>
-            <span className="text-gray-500 mx-1">:</span>
-            <span className="text-yellow-400">{formatNumber(timeSinceDeparture.minutes)}</span>
-            <span className="text-gray-500 mx-1">:</span>
-            <span className="text-yellow-400">{formatNumber(timeSinceDeparture.seconds)}</span>
-            <span className="text-gray-500 mx-1">.</span>
-            <span className="text-yellow-400">{formatMilliseconds(timeSinceDeparture.milliseconds)}</span>
-          </div>
+      <div className="text-center">
+        <h2 className="text-2xl mb-4">Time Until Return</h2>
+        <div className="font-mono text-4xl mb-16 text-[var(--foreground)]">
+          <span className="text-[var(--foreground)]">{formatNumber(timeUntilReturn.days)}</span>
+          <span className="text-gray-500 mx-1">days</span>
+          <span className="text-[var(--foreground)]">{formatNumber(timeUntilReturn.hours)}</span>
+          <span className="text-gray-500 mx-1">:</span>
+          <span className="text-[var(--foreground)]">{formatNumber(timeUntilReturn.minutes)}</span>
+          <span className="text-gray-500 mx-1">:</span>
+          <span className="text-[var(--foreground)]">{formatNumber(timeUntilReturn.seconds)}</span>
+          <span className="text-gray-500 mx-1">.</span>
+          <span className="text-[var(--foreground)]">{formatMilliseconds(timeUntilReturn.milliseconds)}</span>
         </div>
 
-        <div className="text-center">
-          <h2 className="text-2xl mb-4">Time Until Return</h2>
-          <div className="font-mono text-4xl">
-            <span className="text-green-400">{formatNumber(timeUntilReturn.days)}</span>
-            <span className="text-gray-500 mx-1">days</span>
-            <span className="text-green-400">{formatNumber(timeUntilReturn.hours)}</span>
-            <span className="text-gray-500 mx-1">:</span>
-            <span className="text-green-400">{formatNumber(timeUntilReturn.minutes)}</span>
-            <span className="text-gray-500 mx-1">:</span>
-            <span className="text-green-400">{formatNumber(timeUntilReturn.seconds)}</span>
-            <span className="text-gray-500 mx-1">.</span>
-            <span className="text-green-400">{formatMilliseconds(timeUntilReturn.milliseconds)}</span>
-          </div>
+        <h2 className="text-2xl mb-4">Time Since Departure</h2>
+        <div className="font-mono text-4xl mb-16 text-[var(--foreground)]">
+          <span className="text-[var(--foreground)]">{formatNumber(timeSinceDeparture.days)}</span>
+          <span className="text-gray-500 mx-1">days</span>
+          <span className="text-[var(--foreground)]">{formatNumber(timeSinceDeparture.hours)}</span>
+          <span className="text-gray-500 mx-1">:</span>
+          <span className="text-[var(--foreground)]">{formatNumber(timeSinceDeparture.minutes)}</span>
+          <span className="text-gray-500 mx-1">:</span>
+          <span className="text-[var(--foreground)]">{formatNumber(timeSinceDeparture.seconds)}</span>
+          <span className="text-gray-500 mx-1">.</span>
+          <span className="text-[var(--foreground)]">{formatMilliseconds(timeSinceDeparture.milliseconds)}</span>
         </div>
       </div>
 
-      <div className="w-full max-w-4xl">
-        <h2 className="text-2xl mb-4 text-center">Days Passed</h2>
+      <div className="w-full max-w-4xl mt-48">
+        <h2 className="text-2xl mb-4 text-center text-[var(--foreground)]">Days Passed</h2>
         <div className="flex justify-center">
           <div className="grid grid-cols-7 gap-4">
             {Array.from({ length: totalDays }).map((_, index) => (
-              <div key={index} className={`w-12 h-12 rounded-full ${index < daysPassed ? "bg-blue-400" : "bg-gray-700"}`} />
+              <div key={index} className={`w-12 h-12 rounded-full ${index < daysPassed ? "bg-[var(--foreground)]" : "bg-[var(--darkerback)]"}`} />
             ))}
           </div>
         </div>
       </div>
+
+      {/* Fixed Gradient Overlay as Footer */}
+      <div className={`fixed inset-x-0 bottom-0 h-32 bg-gradient-to-t 'from-white to-transparent' pointer-events-none`}></div>
     </div>
   )
 }
