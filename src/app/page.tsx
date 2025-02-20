@@ -8,7 +8,7 @@ const TimeTracker = () => {
 
   // Define your departure and return dates in PST
   const departureDate: number = new Date("2025-01-04T14:00:00-08:00").getTime()
-  const returnDate: number = new Date("2025-05-13T12:00:00-07:00").getTime() // Note: PDT in May
+  const returnDate: number = new Date("2025-05-18T12:00:00-07:00").getTime() // Note: PDT in May
 
   useEffect(() => {
     const timer = setInterval(() => {
